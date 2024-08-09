@@ -1,0 +1,26 @@
+{
+  "name": "backend-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --inspect src/server.js",
+    "vercel-build": "npx prisma generate && npx prisma migrate deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "@prisma/extension-accelerate": "^1.1.0",
+    "@vercel/node": "^3.2.8",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "prisma": "^5.18.0",
+    "zod": "^3.23.8"
+  }
+}
