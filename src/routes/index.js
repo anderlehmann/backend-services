@@ -13,7 +13,7 @@ const router = Router();
 router.get('/shoes', readShoes);
 router.get('/shoes/:id', readShoe);
 router.post('/shoes', validateCreateShoe, createShoe);
-router.put('/shoes/:id', validateCreateShoe, updateShoe);
+router.put('/shoes/:id', validateExistingId, validateCreateShoe, updateShoe);
 router.delete('/shoes/:id', validateExistingId, deleteShoe);
 
 module.exports = router;
