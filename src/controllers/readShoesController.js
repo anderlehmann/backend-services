@@ -1,9 +1,20 @@
 const prismaClient = require('../database/prismaClient.js')
 
-const readShoes = async (_req, res) => {
-  const shoe = await prismaClient.shoes.findMany({});
+const readShoes = async (req, res) => {
+  const skip = Number(req?.query?.skip) || 0;
+  const take = Number(req?.query?.take) || 15;
 
-  return res.json(shoe);
+  const [users, total] = await prismaClient.$transaction([
+    prismaClient.shoes.findMany({ skip, take }),
+    prismaClient.shoes.count()
+  ])
+
+  const totalPages = Math.ceil(total / take);
+
+  return res.status(200).json({ total, totalPages, users });
+
+  // const shoe = await prismaClient.shoes.findMany({});
+  // return res.json(shoe);
 };
 
 const readShoe = async (req, res) => {
