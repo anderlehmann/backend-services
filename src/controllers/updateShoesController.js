@@ -2,7 +2,7 @@ const prismaClient = require('../database/prismaClient.js')
 
 const updateShoe = async (req, res) => {
   const { id } = req.params;
-  const { model, brand, price, image_url } = req.body;
+  const { model, brand, price, image_url, image_url_2, image_url_3, image_url_4, image_url_5 } = req.body;
 
   const idNumber = Number(id);
 
@@ -15,7 +15,11 @@ const updateShoe = async (req, res) => {
         model,
         brand,
         price,
-        image_url
+        image_url,
+        image_url_2,
+        image_url_3,
+        image_url_4,
+        image_url_5
       }
     });
 
